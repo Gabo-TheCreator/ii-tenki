@@ -71,7 +71,7 @@ class ViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             self.keyboardHeight = keyboardHeight
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
-                self.searchButtonView.transform = self.searchButtonView.transform.translatedBy(x: 0, y: -keyboardHeight)
+                self.searchButtonViewBottomConstraint.constant = self.keyboardHeight
             })
         }
     }
@@ -111,11 +111,11 @@ class ViewController: UIViewController {
     func hideSearchForCityViewContriner(duration: Double) {
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .transitionCrossDissolve, animations: {
             self.searchForCityViewContainer.alpha = 0
-            self.searchButtonView.transform = self.searchButtonView.transform.translatedBy(x: 0, y: self.keyboardHeight)
+            self.searchButtonViewBottomConstraint.constant = self.keyboardHeight
         })  { (_) in
             self.cityTextField.text = ""
             self.keyboardHeight = 0
-            self.view.sendSubviewToBack(self.searchForCityViewContainer)
+            self.mainTableView.sendSubviewToBack(self.searchForCityViewContainer)
         }
     }
     
