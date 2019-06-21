@@ -1,0 +1,6 @@
+framework module Pods_ii_tenki {
+  umbrella header "Pods-ii tenki-umbrella.h"
+
+  export *
+  module * { export * }
+}
